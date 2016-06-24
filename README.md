@@ -17,8 +17,8 @@
 ## 代码集成
 #### CocoaPods集成方式
 在工程的Podfile里添加以下代码：<p>
-**pod 'CAPSegment'**<p>
-保存并执行 **pod install**，然后用后缀为**.xcworkspace**的文件打开工程。<p>
+_pod 'CAPSegment'_<p>
+保存并执行 _pod install_，然后用后缀为_.xcworkspace_的文件打开工程。<p>
 关于CocoaPods的更多信息请查看[CocoaPods官方网站](https://cocoapods.org)。
 #### 手动集成方式
 向工程中导入CAPSegment下的 CAPSegmentViewController.h 和 CAPSegmentViewController.m
