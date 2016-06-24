@@ -15,6 +15,11 @@
 ![image](https://raw.githubusercontent.com/captain9911/CAPSegment/master/Screenshots/IMG_1090.PNG)
 ![image](https://raw.githubusercontent.com/captain9911/CAPSegment/master/Screenshots/IMG_1091.PNG)
 ## 代码集成
+#### CocoaPods集成方式
+在工程的Podfile里添加以下代码：
+pod 'CAPSegment'
+保存并执行 pod install，然后用后缀为.xcworkspace的文件打开工程。
+关于CocoaPods的更多信息请查看CocoaPods官方网站。
 #### 手动集成方式
 向工程中导入CAPSegment下的 CAPSegmentViewController.h 和 CAPSegmentViewController.m
 ## 快速使用
