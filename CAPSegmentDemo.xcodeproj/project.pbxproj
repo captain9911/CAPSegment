@@ -488,7 +488,7 @@
 				INFOPLIST_FILE = CAPSegmentDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.sino-town.CAPSegmentDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.captain9911.CAPSegmentDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -500,7 +500,7 @@
 				INFOPLIST_FILE = CAPSegmentDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.sino-town.CAPSegmentDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.captain9911.CAPSegmentDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

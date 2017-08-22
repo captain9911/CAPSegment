@@ -16,6 +16,7 @@
 
 #define kTitleDefaultColor      [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1.0]
 #define kTitleSelectedColor     [UIColor colorWithRed:57/255.0 green:148/255.0 blue:231/255.0 alpha:1.0]
+#define kTitleBackgroundColor   [UIColor whiteColor]
 #define kLineDefaultColor       [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
 
 @interface CAPSegmentViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
@@ -50,6 +51,9 @@
     if (!_titleSelectedColor) {
         _titleSelectedColor = kTitleSelectedColor;
     }
+    if (!_titleBackgroundColor) {
+        _titleBackgroundColor = kTitleBackgroundColor;
+    }
     if (!_displayCount) {
         _displayCount = kDisplayDefaultCount;
     }
@@ -61,7 +65,7 @@
     }
 
     _titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _titleHeight)];
-    _titleScrollView.backgroundColor = [UIColor whiteColor];
+    _titleScrollView.backgroundColor = _titleBackgroundColor;
     _titleScrollView.showsHorizontalScrollIndicator = NO;
     _titleScrollView.showsVerticalScrollIndicator = NO;
     _titleScrollView.bounces = NO;

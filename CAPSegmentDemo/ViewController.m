@@ -65,6 +65,7 @@
 //    segmentVC.titleHeight = 60;
 //    segmentVC.titleDefaultColor = [UIColor greenColor];
 //    segmentVC.titleSelectedColor = [UIColor redColor];
+//    segmentVC.titleBackgroundColor = [UIColor blackColor];
 //    segmentVC.displayCount = 5;
 //    segmentVC.lineColor = [UIColor blueColor];
     [self.navigationController pushViewController:segmentVC animated:YES];

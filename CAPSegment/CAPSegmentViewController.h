@@ -20,6 +20,8 @@
 @property (strong, nonatomic) UIColor *titleDefaultColor;
 //segment选中时的颜色
 @property (strong, nonatomic) UIColor *titleSelectedColor;
+//segment背景色
+@property (strong, nonatomic) UIColor *titleBackgroundColor;
 //segment显示的数量
 @property (nonatomic) NSInteger displayCount;
 //segment标题与内容的分割线颜色
