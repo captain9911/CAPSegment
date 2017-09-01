@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|  
   s.name             = "CAPSegment"  
-  s.version          = "1.3.0"  
+  s.version          = "1.3.1"  
   s.summary          = "A delightful iOS segment view controller framework."  
   s.description      = <<-DESC  
                        It is a segment view controller framework on iOS, which implement by Objective-C.  
