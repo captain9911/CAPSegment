@@ -28,8 +28,9 @@
 @property (strong, nonatomic) UIColor *lineColor;
 
 //传入标题数组，适用于各标题对应相同的控制器
-- (instancetype)initWithTitleArray:(NSArray *)titleArray subViewControllerName:(NSString *)subVCName;
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerName:(NSString *)subVCName;
 //传入标题、控制器名的数组，适用于不同的标题对应不同的控制器
-- (instancetype)initWithTitleArray:(NSArray *)titleArray subViewControllerNameArray:(NSArray *)subVCNameArray;
-
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerNameArray:(NSArray <NSString *> *)subVCNameArray;
+//传入标题、控制器数组
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerArray:(NSArray <UIViewController *> *)subViewControllerArray;
 @end

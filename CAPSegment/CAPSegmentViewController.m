@@ -21,15 +21,14 @@
 
 @interface CAPSegmentViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-@property (retain, nonatomic) NSMutableArray *pages;
+@property (retain, nonatomic) NSArray <UIViewController *> *pages;
 @property (retain, nonatomic) UIPageViewController *pageViewController;
 
 @end
 
 @implementation CAPSegmentViewController
 {
-    NSArray *_titleArray;           //分类标题数组
-    NSArray *_subVCNameArray;       //子页面 VC名称
+    NSArray <NSString *> *_titleArray;           //分类标题数组
     UIScrollView *_titleScrollView; //分类选项
     UIView *_markView;              //下方的标记
 }
@@ -73,20 +72,6 @@
     
     [self initTitleScrollView];
     
-    self.pages = [[NSMutableArray alloc] init];
-    for (int i = 0; i < _titleArray.count; i ++) {
-        NSString *subVCName;
-        if (_subVCNameArray.count - 1 < i) {
-            //当控制器数量少于标题数量时，复用最后一个控制器，使控制器数量与标题数量相等
-            subVCName = [_subVCNameArray lastObject];
-        } else {
-            subVCName = [_subVCNameArray objectAtIndex:i];
-        }
-        Class subVC = NSClassFromString(subVCName);
-        UIViewController *vc = [[subVC alloc] init];
-        vc.title = [_titleArray objectAtIndex:i];
-        [self.pages addObject:vc];
-    }
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     CGRect pageVCFrame = self.pageViewController.view.frame;
     pageVCFrame.origin.y = _titleHeight;
@@ -107,22 +92,54 @@
 
 #pragma mark - 初始化方法
 //传入标题数组，适用于各标题对应相同的控制器
-- (instancetype)initWithTitleArray:(NSArray *)titleArray subViewControllerName:(NSString *)subVCName {
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerName:(NSString *)subVCName {
     self = [super init];
-    _titleArray = titleArray;
-    _subVCNameArray = [NSArray arrayWithObject:subVCName];
+    if (self) {
+        _titleArray = titleArray;
+        _pages = [self getSubVCArrayWithTitleArray:titleArray subVCNameArray:@[subVCName]];
+    }
     return self;
 }
 
 //传入标题、控制器名的数组，适用于不同的标题对应不同的控制器
-- (instancetype)initWithTitleArray:(NSArray *)titleArray subViewControllerNameArray:(NSArray *)subVCNameArray {
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerNameArray:(NSArray <NSString *> *)subVCNameArray {
     self = [super init];
-    _titleArray = titleArray;
-    _subVCNameArray = subVCNameArray;
+    if (self) {
+        _titleArray = titleArray;
+        _pages = [self getSubVCArrayWithTitleArray:titleArray subVCNameArray:subVCNameArray];
+    }
     return self;
 }
-
+//传入标题、控制器数组
+- (instancetype)initWithTitleArray:(NSArray <NSString *> *)titleArray subViewControllerArray:(NSArray <UIViewController *> *)subViewControllerArray {
+    self = [super init];
+    if (self) {
+        _titleArray = titleArray;
+        for (int i = 0; i < titleArray.count; i ++) {
+            subViewControllerArray[i].title = titleArray[i];
+        }
+        _pages = subViewControllerArray;
+    }
+    return self;
+}
 #pragma mark - 对象方法
+- (NSArray <UIViewController *> *)getSubVCArrayWithTitleArray:(NSArray <NSString *> *)titleArray subVCNameArray:(NSArray <NSString *> *)subVCNameArray {
+    NSMutableArray <UIViewController *> *mArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < titleArray.count; i ++) {
+        NSString *subVCName;
+        if (subVCNameArray.count - 1 < i) {
+            //当控制器数量少于标题数量时，复用最后一个控制器，使控制器数量与标题数量相等
+            subVCName = [subVCNameArray lastObject];
+        } else {
+            subVCName = [subVCNameArray objectAtIndex:i];
+        }
+        Class subVC = NSClassFromString(subVCName);
+        UIViewController *vc = [[subVC alloc] init];
+        vc.title = [titleArray objectAtIndex:i];
+        [mArr addObject:vc];
+    }
+    return mArr;
+}
 //获取按钮的OriginX
 - (CGFloat)getButtonOriginXWithSpace:(CGFloat)space buttonIndex:(NSInteger)buttonIndex {
     CGFloat originX;
